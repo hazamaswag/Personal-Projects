@@ -4,17 +4,19 @@ im = Image.open('obama_og.jpg')
 pix = im.load()
 x_dim, y_dim = im.size
 print("dimensions:", x_dim, y_dim)
-print("(0,0):", pix[0,0])
-print("(0,699):", pix[0,699])
 
-for y in range(x_dim):
-    for x in range(y_dim):
-        pix[x,y_dim - y - 1], pix[x,y_dim - (y_dim - 1) - 1] = pix[x,y], pix[x, y_dim - 1]
-#pix[0,y_dim - 699 - 1] = pix[0,699]
-# print("(0,0):",pix[0,0])
-# print("(0,699):",pix[0,699])
+for x in range(x_dim ):
+    for y in range(y_dim):
+        print("(",x, ",", y,")", " ---->  (", pix[x,y], ")",sep="")
+        print("(",x, ",", y_dim - y - 1,")", " ---->  (", pix[x,y_dim - y - 1], ")",sep="")
+        pix[x,y] = pix[y,x]
+        print("-------------------------------------------------------")
+        print("(",x, ",", y,")", " ---->  (", pix[x,y], ")",sep="")
+        print("(",x, ",", y_dim - y - 1,")", " ---->  (", pix[x,y_dim - y - 1], ")",sep="")
+        print("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
+
 im.save('obama_flipped.png')
-
+# pix[x,y_dim - y - 1], pix[x,y] = pix[x,y], pix[x, y_dim - y - 1]
 # def flip(x):
 #     print("og:", x)
 #     y = []
